@@ -16,6 +16,9 @@ export default {
       } catch (error) {
         console.log(error)
       }
+    },
+    navigateItem(id) {
+      this.$router.push(`/students/${id}`)
     }
   },
   mounted() {
@@ -25,11 +28,10 @@ export default {
 </script>
 
 <template>
-  <!-- <h3>{{ listOfStudents }}</h3> -->
-  <div v-for="student in listOfStudents">
-    <h3>{{ student.name }}</h3>
-    <h3>{{ student.email }}</h3>
-    <h3>{{ student.studentId }}</h3>
+  <div v-for="student in listOfStudents" :key="student._id">
+    <div @click="navigateItem(student._id)">
+      <h3>{{ student.name }}</h3>
+    </div>
   </div>
 </template>
 
