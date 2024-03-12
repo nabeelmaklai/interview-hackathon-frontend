@@ -5,35 +5,37 @@ export default {
   name: 'StudentForm',
   data: function () {
     return {
+      payload: {
       name: '',
       email: '',
       Id: '',
       courses: []
     }
+  }
   },
   methods: {
     handleFormChange(event) {
-      this[event.target.name] = event.target.value
+      this.payload[event.target.name] = event.target.value
     },
-    handleChange(e) {
-      if (e.target.checked) {
-        this.courses((prev) => [...prev, e.target.id])
-      } else {
-        const uncheck = (value) => {
-          return value !== e.target.id
-        }
-        this.courses((prev) => prev.filter(uncheck))
-      }
-    },
+    // ,
+    // handleChange(e) {
+    //   if (e.target.checked) {
+    //     this.courses((prev) => [...prev, e.target.id])
+    //   } else {
+    //     const uncheck = (value) => {
+    //       return value !== e.target.id
+    //     }
+    //     this.courses((prev) => prev.filter(uncheck))
+    //   }
+    // }
     handleSubmit(event) {
       event.preventDefault()
-  //     try {
-  //   const res = await Client.post('/auth/register', data)
-  //   console.log(data)
-  //   return res.data
-  // } catch (error) {
-  //   throw error
-  // }
+      try {
+        await Client.post('/courses', this.payload)
+        console.log(payload)
+      } catch (error) {
+        console.log(error)
+      }
       this.email = ''
       this.password = ''
       this.Id = ''
@@ -68,6 +70,18 @@ export default {
         type="text"
       />
       <div>
+        <select
+          :id="courses"
+          onChange="{handleChange}"
+          required
+          :value="courses"
+        >
+          <option value="" disabled>Select the course</option>
+          <option value="chemistry">Chmistry</option>
+          <option value="physics">Physics</option>
+        </select>
+      </div>
+      <!-- <div>
         <label htmlFor="science">Science</label>
         <input
           id=""
@@ -82,7 +96,7 @@ export default {
           type="checkbox"
           onChange="{handleChange}"
         />
-      </div>
+      </div> -->
       <button :disabled="!name || !email || !Id || !courses">Log In</button>
     </form>
   </div>

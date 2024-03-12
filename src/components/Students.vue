@@ -12,12 +12,14 @@ export default {
       this.listOfStudents = response.data
     }
   },
-  mounted() {
+  mounted: function () {
     // studentsList()
   }
 }
 </script>
 
-<template></template>
+<template>
+  {{ studentsList() }}
+</template>
 
 <style></style>

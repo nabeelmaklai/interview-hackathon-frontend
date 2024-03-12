@@ -1,10 +1,10 @@
-<script setup>
+<script>
 import Students from './components/Students.vue'
 
-// export default {
-//   name: 'App',
-//   components: { Students }
-// }
+export default {
+  name: 'App',
+  components: { Students }
+}
 </script>
 
 <template>
