@@ -8,8 +8,8 @@ export default {
       student: null,
       courses: [],
       chosenCourse: null,
-      // grades: [0, 1, 2, 3, 4],
-      // chosenGrade: null
+      grades: [0, 1, 2, 3, 4],
+      chosenGrade: null
     }
   },
   methods: {
@@ -35,7 +35,8 @@ export default {
       const studentId = this.$route.params.id
       try {
         await Client.put(`/students/${studentId}`, {
-          courseId: this.chosenCourse
+          courseId: this.chosenCourse,
+          grade: this.chosenGrade
         })
         await this.studentInfo()
         this.chosenCourse = null
@@ -45,7 +46,15 @@ export default {
     },
     selectCourse(event) {
       this.chosenCourse = event.target.value
+    },
+    selectGrade(event) {
+      this.chosenGrade = event.target.value
     }
+    // ,
+    // async getGrades() {
+    //   const response = await axios.get(`${BASE_URL}/grades`)
+    //   this.grades = response.data
+    // }
   },
   mounted() {
     this.studentInfo()
@@ -57,6 +66,8 @@ export default {
 <template>
   <div v-if="student">
     <h3>{{ student.name }}</h3>
+    <h4>{{ student.email }}</h4>
+    <h4>{{ student.studentId }}</h4>
     <div>
       <h4>Courses:</h4>
       <ul>
@@ -64,13 +75,19 @@ export default {
           {{ course.name }}
         </li>
       </ul>
-      <select v-if="courses" name="courses" @change="selectCourse">
-        <option v-for="course in courses" :value="course._id">
-          {{ course.name }}
-        </option>
-      </select>
-      <button @click="assignCourse">Assign Course</button>
+      <div>
+        <select v-if="courses" name="courses" @change="selectCourse">
+          <option v-for="course in courses" :value="course._id">
+            {{ course.name }}
+          </option>
+        </select>
+        <select v-if="grades" name="grades" @change="selectGrade">
+          <option v-for="grade in grades" :value="grade._id">
+            {{ grade }}
+          </option>
+        </select>
+        <button @click="assignCourse">Assign Course</button>
+      </div>
     </div>
   </div>
 </template>
-
