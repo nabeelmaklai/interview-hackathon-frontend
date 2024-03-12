@@ -1,17 +1,12 @@
-<script>
-import NavBar from './components/NavBar.vue'
-export default {
-  name: 'App',
-  components: {
-    NavBar
-  },
-  data: () => ({ heading: '' }),
-  methods: {
-    showWallets() {},
-    hideWallets() {}
-  },
-  mounted: function () {}
-}
+
+<script >
+import Students from './components/Students.vue'
+
+// export default {
+//   name: 'App',
+//   components: { Students }
+// }
+
 </script>
 
 <template>
@@ -19,6 +14,8 @@ export default {
     <h1>The School App</h1>
     <NavBar />
     <router-view></router-view>
+    <Students />
+
   </div>
 </template>
 
