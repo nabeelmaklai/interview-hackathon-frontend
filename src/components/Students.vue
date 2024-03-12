@@ -25,11 +25,8 @@ export default {
 </script>
 
 <template>
-  <!-- <h3>{{ listOfStudents }}</h3> -->
   <div v-for="student in listOfStudents">
     <h3>{{ student.name }}</h3>
-    <h3>{{ student.email }}</h3>
-    <h3>{{ student.studentId }}</h3>
   </div>
 </template>
 
