@@ -2,14 +2,20 @@
 import Client from '../../services/api'
 export default {
   name: 'Students',
-  data: () => ({
-    listOfStudents: []
-  }),
+  data: function () {
+    return {
+      listOfStudents: []
+    }
+  },
   methods: {
     async studentsList() {
-      const response = await Client.get('/students')
-      console.log(response.data)
-      this.listOfStudents = response.data
+      try {
+        const response = await Client.get('/students')
+        this.listOfStudents = response.data
+        console.log(response.data)
+      } catch (error) {
+        console.log(error)
+      }
     }
   },
   mounted() {
@@ -18,6 +24,13 @@ export default {
 }
 </script>
 
-<template></template>
+<template>
+  <!-- <h3>{{ listOfStudents }}</h3> -->
+  <div v-for="student in listOfStudents">
+    <h3>{{ student.name }}</h3>
+    <h3>{{ student.email }}</h3>
+    <h3>{{ student.studentId }}</h3>
+  </div>
+</template>
 
 <style></style>
