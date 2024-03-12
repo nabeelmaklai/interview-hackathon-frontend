@@ -12,7 +12,6 @@ export default {
       try {
         const response = await Client.get('/students')
         this.listOfStudents = response.data
-        console.log(response.data)
       } catch (error) {
         console.log(error)
       }
