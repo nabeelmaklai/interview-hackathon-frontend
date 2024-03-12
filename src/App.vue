@@ -9,8 +9,11 @@ export default {
 
 <template>
   <div>
+    <h1>The School App</h1>
+    <NavBar />
+    <router-view></router-view>
     <Students />
-    <h1>My New Vue App</h1>
+
   </div>
 </template>
 
