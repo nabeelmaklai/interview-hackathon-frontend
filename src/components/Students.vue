@@ -12,10 +12,12 @@ export default {
       try {
         const response = await Client.get('/students')
         this.listOfStudents = response.data
-        console.log(response.data)
       } catch (error) {
         console.log(error)
       }
+    },
+    navigateItem(id) {
+      this.$router.push(`/students/${id}`)
     }
   },
   mounted() {
@@ -25,8 +27,10 @@ export default {
 </script>
 
 <template>
-  <div v-for="student in listOfStudents">
-    <h3>{{ student.name }}</h3>
+  <div v-for="student in listOfStudents" :key="student._id">
+    <div @click="navigateItem(student._id)">
+      <h3>{{ student.name }}</h3>
+    </div>
   </div>
 </template>
 
