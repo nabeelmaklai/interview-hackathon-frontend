@@ -7,9 +7,9 @@ export default {
     return {
       student: null,
       courses: [],
-      grades: [0, 1, 2, 3, 4],
       chosenCourse: null,
-      chosenGrade: null
+      // grades: [0, 1, 2, 3, 4],
+      // chosenGrade: null
     }
   },
   methods: {
@@ -73,3 +73,4 @@ export default {
     </div>
   </div>
 </template>
+
