@@ -1,12 +1,11 @@
-
-<script >
+<script>
 import Students from './components/Students.vue'
+// import Client from './services/api.js'
 
-// export default {
-//   name: 'App',
-//   components: { Students }
-// }
-
+export default {
+  name: 'App',
+  components: { Students }
+}
 </script>
 
 <template>
