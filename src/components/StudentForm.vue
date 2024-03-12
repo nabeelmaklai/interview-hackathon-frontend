@@ -6,12 +6,12 @@ export default {
   data: function () {
     return {
       payload: {
-      name: '',
-      email: '',
-      Id: '',
-      courses: []
+        name: '',
+        email: '',
+        studentId: '',
+        courses: []
+      }
     }
-  }
   },
   methods: {
     handleFormChange(event) {
@@ -28,18 +28,17 @@ export default {
     //     this.courses((prev) => prev.filter(uncheck))
     //   }
     // }
-    handleSubmit(event) {
+    async handleSubmit(event) {
       event.preventDefault()
       try {
-        await Client.post('/courses', this.payload)
-        console.log(payload)
+        await Client.post('/students', this.payload)
       } catch (error) {
         console.log(error)
       }
-      this.email = ''
-      this.password = ''
-      this.Id = ''
-      this.courses = ''
+      this.payload.name = ''
+      this.payload.email = ''
+      this.payload.studentId = ''
+      this.payload.courses = []
     }
   }
 }
@@ -49,38 +48,42 @@ export default {
   <div class="form-container">
     <form v-on:submit="handleSubmit">
       <input
-        @input="handleChange"
+        @input="handleFormChange"
         placeholder="Name"
-        :value="name"
+        :value="payload.name"
         name="name"
         type="text"
       />
       <input
-        @input="handleChange"
+        @input="handleFormChange"
         placeholder="Email"
-        :value="email"
+        :value="payload.email"
         name="email"
         type="email"
       />
       <input
-        @input="handleChange"
+        @input="handleFormChange"
         placeholder="Student ID"
-        :value="Id"
-        name="Id"
+        :value="payload.studentId"
+        name="studentId"
         type="text"
       />
-      <div>
+      <!-- <div>
         <select
           :id="courses"
-          onChange="{handleChange}"
+          @input="
+            {
+              handleChange
+            }
+          "
           required
-          :value="courses"
+          :value="payload.courses"
         >
           <option value="" disabled>Select the course</option>
-          <option value="chemistry">Chmistry</option>
-          <option value="physics">Physics</option>
+          <option :value="payload.courses">Chemistry</option>
+          <option :value="payload.courses">Physics</option>
         </select>
-      </div>
+      </div> -->
       <!-- <div>
         <label htmlFor="science">Science</label>
         <input
@@ -97,7 +100,9 @@ export default {
           onChange="{handleChange}"
         />
       </div> -->
-      <button :disabled="!name || !email || !Id || !courses">Log In</button>
+      <button :disabled="!payload.name || !payload.email || !payload.studentId">
+        Register
+      </button>
     </form>
   </div>
 </template>

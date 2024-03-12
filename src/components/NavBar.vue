@@ -12,16 +12,22 @@ export default {
   <nav>
     <router-link to="/" name="HomePage">Home</router-link>
     <router-link to="/students" name="Students">students</router-link>
+    <router-link to="/studentform" name="studentform"
+      >Register a student</router-link
+    >
+    <router-link to="/courseform" name="courseform"
+      >Register a course</router-link
+    >
   </nav>
 </template>
 
 <style>
 .router-link-exact-active {
-  color: #fff;
+  color: black;
 }
 
 nav {
-  background: #42b983;
+  background: #819c90;
   padding: 1em;
 }
 
