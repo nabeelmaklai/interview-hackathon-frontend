@@ -1,20 +1,31 @@
 <script>
-const students = [{ id: 1, name: 'Ali' }]
+import Client from '../../services/api'
 export default {
   name: 'StudentDetails',
-  data: () => ({ student: null }),
-  mounted: function () {
-    // this.student = students.find(
-    //   (student) => student.id === parseInt(this.$route.params.id)
-    // )
-    console.log('id is : ', parseInt(this.$route.params.id))
+  data: function () {
+    return {
+      student: null
+    }
+  },
+  methods: {
+    async studentInfo() {
+      try {
+        const id = this.$route.params.id
+        const response = await Client.get(`/students/${id}`)
+        this.student = response.data
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  },
+  mounted() {
+    this.studentInfo()
   }
 }
 </script>
 
 <template>
-  <div>Student Details</div>
-  <div>name: {{ student.name }}</div>
+  <h3>{{ student.name }}</h3>
 </template>
 
 <style></style>
