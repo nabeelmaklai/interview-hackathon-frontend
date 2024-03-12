@@ -1,16 +1,21 @@
-<script setup>
+
+<script >
 import Students from './components/Students.vue'
 
 // export default {
 //   name: 'App',
 //   components: { Students }
 // }
+
 </script>
 
 <template>
   <div>
+    <h1>The School App</h1>
+    <NavBar />
+    <router-view></router-view>
     <Students />
-    <h1>My New Vue App</h1>
+
   </div>
 </template>
 
