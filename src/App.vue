@@ -1,10 +1,11 @@
 <script>
 import Students from './components/Students.vue'
+import NavBar from './components/NavBar.vue'
 // import Client from './services/api.js'
 
 export default {
   name: 'App',
-  components: { Students }
+  components: { Students, NavBar }
 }
 </script>
 
@@ -13,8 +14,6 @@ export default {
     <h1>The School App</h1>
     <NavBar />
     <router-view></router-view>
-    <Students />
-
   </div>
 </template>
 
