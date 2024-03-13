@@ -2,7 +2,6 @@
 import Students from './components/Students.vue'
 import NavBar from './components/NavBar.vue'
 import CourseForm from './components/CourseForm.vue'
-// import Client from './services/api.js'
 
 export default {
   name: 'App',

@@ -17,17 +17,6 @@ export default {
     handleFormChange(event) {
       this.payload[event.target.name] = event.target.value
     },
-    // ,
-    // handleChange(e) {
-    //   if (e.target.checked) {
-    //     this.courses((prev) => [...prev, e.target.id])
-    //   } else {
-    //     const uncheck = (value) => {
-    //       return value !== e.target.id
-    //     }
-    //     this.courses((prev) => prev.filter(uncheck))
-    //   }
-    // }
     async handleSubmit(event) {
       event.preventDefault()
       try {
@@ -68,38 +57,6 @@ export default {
         name="studentId"
         type="text"
       />
-      <!-- <div>
-        <select
-          :id="courses"
-          @input="
-            {
-              handleChange
-            }
-          "
-          required
-          :value="payload.courses"
-        >
-          <option value="" disabled>Select the course</option>
-          <option :value="payload.courses">Chemistry</option>
-          <option :value="payload.courses">Physics</option>
-        </select>
-      </div> -->
-      <!-- <div>
-        <label htmlFor="science">Science</label>
-        <input
-          id=""
-          :value="courses"
-          type="checkbox"
-          onChange="{handleChange}"
-        />
-        <label htmlFor="chemistry">Chemistry</label>
-        <input
-          id="chemistry"
-          :value="courses"
-          type="checkbox"
-          onChange="{handleChange}"
-        />
-      </div> -->
       <button :disabled="!payload.name || !payload.email || !payload.studentId">
         Register
       </button>
