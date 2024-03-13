@@ -35,7 +35,8 @@ export default {
       const studentId = this.$route.params.id
       try {
         await Client.put(`/students/${studentId}`, {
-          courseId: this.chosenCourse
+          courseId: this.chosenCourse,
+          grade: this.chosenGrade
         })
         await this.studentInfo()
         this.chosenCourse = null
@@ -47,7 +48,7 @@ export default {
       this.chosenCourse = event.target.value
     },
     selectGrade(event) {
-      this.selectedGrade = event.target.value
+      this.chosenGrade = event.target.value
     }
     // ,
     // async getGrades() {
